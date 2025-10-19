@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: job-portal
+    env: java
+    plan: starter
+    buildCommand: mvn clean package
+    startCommand: java -jar target/job-portal-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: job-portal-db
+          property: CONNECTION_URL
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: job-portal-db
+          property: USERNAME
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: job-portal-db
+          property: PASSWORD
+      - key: PORT
+        value: 10000 # Render will override with its own port automatically

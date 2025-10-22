@@ -1,0 +1,69 @@
+<!doctype html>
+<html ng-app="jobApp">
+<head>
+  <meta charset="utf-8">
+  <title>Job Portal</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
+  <script src="/app.js"></script>
+  <script src="/services.js"></script>
+  <script src="/controllers.js"></script>
+  <style> body{font-family:Arial; padding:10px;} .card{border:1px solid #ddd;padding:10px;margin:8px;border-radius:6px}</style>
+</head>
+<body>
+  <div ng-controller="MainCtrl as main">
+    <h1>Simple Job Portal</h1>
+    <div>
+      <a href="#/jobs">Jobs</a> | <a href="#/post">Admin: Post Job</a> | <a href="#/profile">Profile</a>
+    </div>
+    <div ng-controller="MainCtrl as main">
+        <div>
+            <span ng-if="currentUser.username">Logged in as: {{currentUser.username || currentUser.email}}</span>
+            <button ng-if="currentUser.userId" ng-click="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div ng-view></div>
+
+    <script type="text/ng-template" id="jobs.html">
+      <h2>Available Jobs</h2>
+      <div ng-repeat="job in jobs" class="card">
+        <h3>{{job.title}} - {{job.company}}</h3>
+        <p>{{job.description}}</p>
+        <p><strong>Location:</strong> {{job.location}}</p>
+        <button ng-click="apply(job.id)">Apply</button>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="post.html">
+      <h2>Post a Job (Admin)</h2>
+      <form ng-submit="postJob()">
+        <input ng-model="job.title" placeholder="Title" required><br>
+        <input ng-model="job.company" placeholder="Company" required><br>
+        <input ng-model="job.location" placeholder="Location"><br>
+        <textarea ng-model="job.description" placeholder="Description"></textarea><br>
+        <button type="submit">Post</button>
+      </form>
+    </script>
+    <script type="text/ng-template" id="login.html">
+        <h2>Login</h2>
+        <form ng-submit="login()">
+            <input ng-model="email" placeholder="Enter email" required>
+            <button type="submit">Login</button>
+        </form>
+    </script>
+
+
+    <script type="text/ng-template" id="profile.html">
+      <h2>Your Profile</h2>
+      <form ng-submit="saveProfile()">
+        <input ng-model="user.username" placeholder="Name"><br>
+        <input ng-model="user.email" placeholder="Email"><br>
+        <input ng-model="user.phone" placeholder="Phone"><br>
+        <textarea ng-model="user.resume" placeholder="Resume text or URL"></textarea><br>
+        <button type="submit">Save</button>
+      </form>
+    </script>
+  </div>
+</body>
+</html>

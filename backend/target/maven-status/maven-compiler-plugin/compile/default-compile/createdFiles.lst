@@ -1,0 +1,14 @@
+com\nizam\jobportal\repository\UserRepository.class
+com\nizam\jobportal\controller\JobController.class
+com\nizam\jobportal\service\ApplicationService.class
+com\nizam\jobportal\JobPortalApplication.class
+com\nizam\jobportal\controller\AuthController.class
+com\nizam\jobportal\repository\JobRepository.class
+com\nizam\jobportal\controller\UserController.class
+com\nizam\jobportal\repository\ApplicationRepository.class
+com\nizam\jobportal\service\UserService.class
+com\nizam\jobportal\service\JobService.class
+com\nizam\jobportal\entity\User.class
+com\nizam\jobportal\controller\ApplicationController.class
+com\nizam\jobportal\entity\Application.class
+com\nizam\jobportal\entity\Job.class

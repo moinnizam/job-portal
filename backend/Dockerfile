@@ -17,4 +17,4 @@ RUN ./mvnw clean package -DskipTests
 EXPOSE 8080
 
 # Run the built jar file
-CMD ["java", "-jar", "target/jobportal-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/job-portal-0.0.1-SNAPSHOT.jar"]
